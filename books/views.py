@@ -10,7 +10,8 @@ from django.views.decorators.csrf import csrf_exempt
 
 @csrf_exempt
 def eventsub_callback(request):
-    print ("zzzzzzzzzzzzzzrequest msg:")
+    #print ("zzzzzzzzzzzzzzrequest msg:")
+    print(request.GET)
     if request.method == 'POST':
         # Process the EventSub notification here
         # Access the payload using request.body or request.POST
@@ -23,6 +24,7 @@ def eventsub_callback(request):
         instance.save()
         return HttpResponseRedirect('/books/book_list.html',status=200)
     else:
+        print(request.GET)
         return HttpResponse(status=405)
 
 
