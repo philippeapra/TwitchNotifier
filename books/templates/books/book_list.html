@@ -1,8 +1,9 @@
 <!-- books/templates/books/book_list.html -->
 <h1>All books</h1>
+{% csrf_token %}
 {% for book in book_list %}
 <ul>
-<li>philippeapra is: {{ book.title }}</li>
+<li>philippeapra is: {{ status }}</li>
 </ul>
 {% endfor %}
-<p> {{ username }}</p>
+

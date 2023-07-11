@@ -11,7 +11,7 @@ client_id = "35a40a7mket0skoaja7p70i205qf8z"
 client_secret = "d89jvmhf6ehs8lyt9qsbgx8exddc02"
 twitch_eventsub_secret = "d89jvmhf6ehs8lyt9qsbgx8exddc02"
 
-auth_redirect_uri = "http://localhost:8000/auth"
+auth_redirect_uri = "http://localhost:8000/admin"
 
 
 # The endpoint for all things Event Sub
@@ -135,126 +135,6 @@ def get_event_types():
 # Get all events, or a specific one
 def get_events(event_name=None):
     events = {
-        "channel.update": {
-            "type": "broadcaster_user_id",
-            "scopes": ['public']
-        },
-        "channel.follow": {
-            "type": "broadcaster_user_id",
-            "scopes": ['public']
-        },
-        "channel.subscribe": {
-            "type": "broadcaster_user_id",
-            "scopes": ['channel:read:subscriptions']
-        },
-        "channel.subscription.end": {
-            "type": "broadcaster_user_id",
-            "scopes": ['channel:read:subscriptions']
-        },
-        "channel.subscription.gift": {
-            "type": "broadcaster_user_id",
-            "scopes": ['channel:read:subscriptions']
-        },
-        "channel.subscription.message": {
-            "type": "broadcaster_user_id",
-            "scopes": ['channel:read:subscriptions']
-        },
-        "channel.cheer": {
-            "type": "broadcaster_user_id",
-            "scopes": ['bits:read']
-        },
-        "channel.raid": {
-            "type": "to_broadcaster_user_id",
-            "scopes": ['public']
-        },
-        "channel.ban": {
-            "type": "broadcaster_user_id",
-            "scopes": ['channel:moderate']
-        },
-        "channel.unban": {
-            "type": "broadcaster_user_id",
-            "scopes": ['channel:moderate']
-        },
-        "channel.moderator.add": {
-            "type": "broadcaster_user_id",
-            "scopes": ['channel:moderate']
-        },
-        "channel.moderator.remove": {
-            "type": "broadcaster_user_id",
-            "scopes": ['channel:moderate']
-        },
-        "channel.channel_points_custom_reward.add": {
-            "type": "broadcaster_user_id",
-            "scopes": ['channel:read:redemptions']
-        },
-        "channel.channel_points_custom_reward.update": {
-            "type": "broadcaster_user_id",
-            "scopes": ['channel:read:redemptions']
-        },
-        "channel.channel_points_custom_reward.remove": {
-            "type": "broadcaster_user_id",
-            "scopes": ['channel:read:redemptions']
-        },
-        "channel.channel_points_custom_reward_redemption.add": {
-            "type": "broadcaster_user_id",
-            "scopes": ['channel:read:redemptions']
-        },
-        "channel.channel_points_custom_reward_redemption.update": {
-            "type": "broadcaster_user_id",
-            "scopes": ['channel:read:redemptions']
-        },
-        "channel.poll.begin": {
-            "type": "broadcaster_user_id",
-            "scopes": ['channel:read:polls']
-        },
-        "channel.poll.progress": {
-            "type": "broadcaster_user_id",
-            "scopes": ['channel:read:polls']
-        },
-        "channel.poll.end": {
-            "type": "broadcaster_user_id",
-            "scopes": ['channel:read:polls']
-        },
-        "channel.prediction.begin": {
-            "type": "broadcaster_user_id",
-            "scopes": ['channel:read:predictions']
-        },
-        "channel.prediction.progress": {
-            "type": "broadcaster_user_id",
-            "scopes": ['channel:read:predictions']
-        },
-        "channel.prediction.lock": {
-            "type": "broadcaster_user_id",
-            "scopes": ['channel:read:predictions']
-        },
-        "channel.prediction.end": {
-            "type": "broadcaster_user_id",
-            "scopes": ['channel:read:predictions']
-        },
-        "channel.goal.begin": {
-            "type": "broadcaster_user_id",
-            "scopes": ['channel:read:goals']
-        },
-        "channel.goal.progress": {
-            "type": "broadcaster_user_id",
-            "scopes": ['channel:read:goals']
-        },
-        "channel.goal.end": {
-            "type": "broadcaster_user_id",
-            "scopes": ['channel:read:goals']
-        },
-        "channel.hype_train.begin": {
-            "type": "broadcaster_user_id",
-            "scopes": ['channel:read:hype_train']
-        },
-        "channel.hype_train.progress": {
-            "type": "broadcaster_user_id",
-            "scopes": ['channel:read:hype_train']
-        },
-        "channel.hype_train.end": {
-            "type": "broadcaster_user_id",
-            "scopes": ['channel:read:hype_train']
-        },
         "stream.online": {
             "type": "broadcaster_user_id",
             "scopes": ['public']
@@ -263,10 +143,6 @@ def get_events(event_name=None):
             "type": "broadcaster_user_id",
             "scopes": ['public']
         },
-        "user.update": {
-            "type": "user_id",
-            "scopes": ['public']
-        }
     }
     return events.get(event_name, events)
 
@@ -282,7 +158,7 @@ def get_subscription_body(user_id, event_name):
         },
         "transport": {
             "method": "webhook",
-            "callback": "https://example.com/webhooks/callback",
+            "callback": "https://ef68-197-58-20-155.ngrok-free.app/eventsub/subscriptions",
             "secret": twitch_eventsub_secret
         }
     }
