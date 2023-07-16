@@ -11,8 +11,10 @@ from django.views.decorators.csrf import csrf_exempt
 @csrf_exempt
 def eventsub_callback(request):
     #print ("zzzzzzzzzzzzzzrequest msg:")
-    print(request.GET)
+    #print(request.GET)
+    
     if request.method == 'POST':
+        print(request.POST)
         # Process the EventSub notification here
         # Access the payload using request.body or request.POST
         # Perform necessary actions based on the event data received
