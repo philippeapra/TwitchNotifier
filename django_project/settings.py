@@ -30,6 +30,7 @@ ALLOWED_HOSTS = [
     '0.0.0.0',
     '16.171.138.140',
     "13.51.143.140",
+    "twitcheventsub.online",
     ]
 
 
