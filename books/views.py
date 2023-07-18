@@ -16,9 +16,15 @@ def eventsub_callback(request):
         # Process the EventSub notification here
         # Access the payload using request.body or request.POST
         instance = Book.objects.first()
-        if request.headers.get('Twitch-Eventsub-Message-Type') == 'notification':
-            instance.title='streamer online'
         payload= json.loads(request.body)
+
+        if request.headers.get('Twitch-Eventsub-Message-Type') == 'notification':
+            if payload["subscription"]['type']=="streamer.online":
+                instance.title='streamer online'
+            elif payload["subscription"]['type']=="streamer.offline":
+                instance.title='streamer offline'
+            else:
+                instance.title='streamer in unknown state'
         try:
             challenge = payload['challenge']
         except:
