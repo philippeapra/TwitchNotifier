@@ -10,7 +10,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 @csrf_exempt
 def eventsub_callback(request):
-    #print ("zzzzzzzzzzzzzzrequest msg:")
+    print ("zzzzzzzzzzzzzzrequest msg:")
     #print(request.GET)
     
     if request.method == 'POST':
@@ -19,7 +19,7 @@ def eventsub_callback(request):
         # Access the payload using request.body or request.POST
         # Perform necessary actions based on the event data received
         # ...
-        print ("zzzzzzzzzzzzzzrequest msg:")
+        #print ("zzzzzzzzzzzzzzrequest msg:")
         #print (request.POST.jsonify)
         instance = Book.objects.first()
         instance.title = "subscribed"
