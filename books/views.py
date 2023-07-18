@@ -28,7 +28,7 @@ def eventsub_callback(request):
          #   break
         
         
-        instance.title = request.body.get('id')
+        instance.title = request.body.get('challenge')
         #instance.subtitle = request.POST.get('created_at')
         #instance.author = request.POST.get('status')
         #instance.isbn = request.POST['id']
