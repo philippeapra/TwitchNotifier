@@ -81,7 +81,7 @@ def verify_signature(request):
 def send_twitch_request(endpoint, body=None, params=None, method = "GET", headers = None):
     # If no special headers are passed, use auth headers
     if not headers:
-        headers = get_auth_headers()
+        headers = get_auth_headers('du7oeo6qwslxuckivrchdo7bwlild8')
     url = f"https://api.twitch.tv/helix/{endpoint}"
     try:
         # Assemble request data
