@@ -39,7 +39,8 @@ def eventsub_callback(request):
         #instance.subtitle = request.POST.get('created_at')
         #instance.author = request.POST.get('status')
         #instance.isbn = request.POST['id']
-        
+        if instance.title ==None:
+            instance.title=""
         instance.save()
         return HttpResponseRedirect('/books/book_list.html',status=200)
     else:
