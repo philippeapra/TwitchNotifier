@@ -37,7 +37,7 @@ ALLOWED_HOSTS = [
     '*',
     ]
 
-CSRF_TRUSTED_ORIGINS = ['*']
+CSRF_TRUSTED_ORIGINS = ['https://*.twitcheventsub.online/','*',]
 # Application definition
 
 INSTALLED_APPS = [
