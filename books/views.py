@@ -25,6 +25,8 @@ def eventsub_callback(request):
         #instance.subtitle = request.POST.get('created_at')
         #instance.author = request.POST.get('status')
         instance = Book.objects.first()
+        if request.headers.get('Twitch-Eventsub-Message-Type') == 'notification':
+            instance.title='streamer online'
         payload= json.loads(request.body)
         #instance.title=str(payload)
         challenge = payload['challenge']
