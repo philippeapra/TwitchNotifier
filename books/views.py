@@ -29,7 +29,10 @@ def eventsub_callback(request):
             instance.title='streamer online'
         payload= json.loads(request.body)
         #instance.title=str(payload)
-        challenge = payload['challenge']
+        try:
+            challenge = payload['challenge']
+        except:
+            challenge=None
         instance.isbn = str(payload)
         if instance.title ==None:
             instance.title=""
