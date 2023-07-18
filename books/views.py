@@ -22,7 +22,10 @@ def eventsub_callback(request):
         #print ("zzzzzzzzzzzzzzrequest msg:")
         #print (request.POST.jsonify)
         instance = Book.objects.first()
-        instance.title = request.POST
+        query =""
+        for key, value in request.POST.items():
+            query += key+":"+value+"   "
+        instance.title = query
         instance.save()
         return HttpResponseRedirect('/books/book_list.html',status=200)
     else:
