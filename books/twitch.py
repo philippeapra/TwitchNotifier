@@ -8,8 +8,8 @@ from urllib.parse import urlencode
 
 # Define and set variables for various information we need
 client_id = "35a40a7mket0skoaja7p70i205qf8z"
-client_secret = "d89jvmhf6ehs8lyt9qsbgx8exddc02"
-twitch_eventsub_secret = "d89jvmhf6ehs8lyt9qsbgx8exddc02"
+client_secret = "khdbvn8gs15xkneue6ssacaa1rpehl"
+twitch_eventsub_secret = "khdbvn8gs15xkneue6ssacaa1rpehl"
 
 auth_redirect_uri = "http://localhost:8000/admin"
 
