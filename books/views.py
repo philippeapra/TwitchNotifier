@@ -17,10 +17,10 @@ def eventsub_callback(request):
         # Access the payload using request.body or request.POST
         instance = Book.objects.first()
         payload= json.loads(request.body)
-        if request.headers.get('Twitch-Eventsub-Message-Type').equals("notification"):
-            if payload.get('subscription').get('type',"").equals("streamer.online"):
+        if request.headers.get('Twitch-Eventsub-Message-Type')=="notification":
+            if payload.get('subscription').get('type',"")=="streamer.online":
                 instance.title='streamer online'
-            elif payload.get('subscription').get('type',"").equals("streamer.offline"):
+            elif payload.get('subscription').get('type',"")=="streamer.offline":
                 instance.title='streamer offline'
             else:
                 instance.title='streamer in unknown state'
@@ -28,7 +28,7 @@ def eventsub_callback(request):
         if instance.title ==None:
             instance.title=""
         instance.save()
-        if request.headers.get('Twitch-Eventsub-Message-Type').equals('webhook_callback_verification') :
+        if request.headers.get('Twitch-Eventsub-Message-Type')=='webhook_callback_verification':
             challenge = payload.get('challenge',"")
             return HttpResponse(status=200,content=challenge)
         return HttpResponseRedirect('/books/book_list.html',status=200)
