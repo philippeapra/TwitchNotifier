@@ -139,10 +139,10 @@ def get_events(event_name=None):
             "type": "broadcaster_user_id",
             "scopes": ['public']
         },
-        "stream.offline": {
-            "type": "broadcaster_user_id",
-            "scopes": ['public']
-        },
+        # "stream.offline": {
+        #     "type": "broadcaster_user_id",
+        #     "scopes": ['public']
+        # },
     }
     return events.get(event_name, events)
 
