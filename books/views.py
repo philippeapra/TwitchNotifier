@@ -29,8 +29,8 @@ def eventsub_callback(request):
         zz={}
         
         instance.title = request.POST.get('id')
-        instance.subtitle = request.POST.get('created_at')
-        instance.author = request.POST.get('status')
+        #instance.subtitle = request.POST.get('created_at')
+        #instance.author = request.POST.get('status')
         #instance.isbn = request.POST['id']
         
         instance.save()
