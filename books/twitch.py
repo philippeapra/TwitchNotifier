@@ -158,7 +158,7 @@ def get_subscription_body(user_id, event_name):
         },
         "transport": {
             "method": "webhook",
-            "callback": "http://16.171.138.140/eventsub/subscriptions",
+            "callback": "https://twitcheventsub.online/eventsub/subscriptions",
             "secret": twitch_eventsub_secret
         }
     }

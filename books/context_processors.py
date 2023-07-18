@@ -6,7 +6,7 @@ def is_stream_live(request):
     
     instance = Book.objects.first()
 
-    # subscribe_user(7)
+    subscribe_user(931614351)
     #print(request.body)
     #context = {'zzz': "zzz"}
     #book = request.user.username
