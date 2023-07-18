@@ -7,7 +7,7 @@ class BookListView(ListView):
     template_name = "book_list.html"
 
 from django.views.decorators.csrf import csrf_exempt
-
+import json
 @csrf_exempt
 def eventsub_callback(request):
     print ("zzzzzzzzzzzzzzrequest msg:")
@@ -26,16 +26,8 @@ def eventsub_callback(request):
         #for key, value in request.POST.items():
          #   query += key+":"+value
          #   break
-        
-        try:
-            instance.title = request.POST.get('challenge')
-        except:
-            try:
-                instance.title = request.POST.get('id')
-            except:
-                instance.title = "failed"
-        
-        
+        payload= json.loads(request.body)
+        instance.title=str(payload)
         #instance.subtitle = request.POST.get('created_at')
         #instance.author = request.POST.get('status')
         #instance.isbn = request.POST['id']
