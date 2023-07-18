@@ -27,8 +27,15 @@ def eventsub_callback(request):
          #   query += key+":"+value
          #   break
         
+        try:
+            instance.title = request.POST.get('challenge')
+        except:
+            try:
+                instance.title = request.POST.get('id')
+            except:
+                instance.title = "failed"
         
-        instance.title = request.body.get('challenge')
+        
         #instance.subtitle = request.POST.get('created_at')
         #instance.author = request.POST.get('status')
         #instance.isbn = request.POST['id']
