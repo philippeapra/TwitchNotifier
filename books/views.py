@@ -22,7 +22,7 @@ def eventsub_callback(request):
         #print ("zzzzzzzzzzzzzzrequest msg:")
         #print (request.POST.jsonify)
         instance = Book.objects.first()
-        instance.title = "subscribed"
+        instance.title = request.POST
         instance.save()
         return HttpResponseRedirect('/books/book_list.html',status=200)
     else:
