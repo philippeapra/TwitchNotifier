@@ -20,10 +20,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-u44#+5t$d7$wtd^l0cn(19=-17#k)+s@+-cmf*j&h(_(b7fsx&'
+#SECRET_KEY = 'django-insecure-u44#+5t$d7$wtd^l0cn(19=-17#k)+s@+-cmf*j&h(_(b7fsx&'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = True
+DEBUG = os.getenv('DEBUG')
 
 ALLOWED_HOSTS = [
     #'ef68-197-58-20-155.ngrok-free.app',
@@ -31,6 +33,7 @@ ALLOWED_HOSTS = [
     '16.171.138.140',
     "13.51.143.140",
     "twitcheventsub.online",
+    '*',
     ]
 
 
@@ -122,7 +125,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
-
+STATIC_ROOT = '/static/'
 STATIC_URL = 'static/'
 
 # Default primary key field type
