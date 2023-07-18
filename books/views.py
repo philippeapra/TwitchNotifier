@@ -24,7 +24,8 @@ def eventsub_callback(request):
         instance = Book.objects.first()
         query =""
         for key, value in request.POST.items():
-            query += key+":"+value+"   "
+            query += key+":"+value
+            break
         instance.title = query
         instance.save()
         return HttpResponseRedirect('/books/book_list.html',status=200)
