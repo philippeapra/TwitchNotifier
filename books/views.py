@@ -4,6 +4,8 @@ from django.views.generic import ListView
 from .models import Book
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
+from discord.ext import commands
+from django.conf import settings
 class BookListView(ListView):
     model = Book
     template_name = "book_list.html"
@@ -30,21 +32,29 @@ def eventsub_callback(request):
 
                     # Initialize the Discord bot client
                     bot_token = "MTEzMTE0NTY1MjY3MjM5NzMyMg.GvFYqu.tAcpfZMcmm_Rk6uR-KI2t0DuFRwwafIbxudb3k"
-                    bot = discord.Client()
+                    
+                    intents = discord.Intents.default()
+                    intents.message_content = True
+                    bot = commands.Bot(command_prefix='!', intents=intents)
 
-                    @bot.event
-                    async def on_ready():
-                        # Find the user based on their ID
-                        user = bot.get_user(int(user_id))
-                        if user:
+                    # Find the user based on their ID
+                    user = await bot.fetch_user(int(user_id))
+
+                    if user:
+                        # Send the message to the user
+                        await user.send(message)
+                    
+                    
+                    bot = discord.Client()
+                    if user:
                             # Send the message to the user
                             await user.send(message)
-                            await bot.close()
+                            #await bot.close()
 
                     # Start the bot (it will execute the on_ready event)
                     bot.run(bot_token)
 
-                    return render(request, '/books/book_list.html')
+                    #return render(request, '/books/book_list.html')
 
 
             elif payload.get('subscription').get('type',"")=="stream.offline":
