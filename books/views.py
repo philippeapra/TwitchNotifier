@@ -29,7 +29,7 @@ def eventsub_callback(request):
                     message = "This is a test message from my Django app!"
 
                     # Initialize the Discord bot client
-                    bot_token = "MTEzMTE0NTY1MjY3MjM5NzMyMg.GVgXuv.Tus05SctOwErWAU_-l6CywXpKhZrv1tacnMd98"
+                    bot_token = "MTEzMTE0NTY1MjY3MjM5NzMyMg.G_R8GA.Q_kScAm4t3RR7ETbLZRAjpbQuVHxjfg5rLtlWg"
                     bot = discord.Client()
 
                     @bot.event
