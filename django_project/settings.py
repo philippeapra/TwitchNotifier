@@ -17,6 +17,8 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+DISCORD_BOT_TOKEN = "MTEzMTE0NTY1MjY3MjM5NzMyMg.Gmqj1_.9B54WFE3jJLJgFLwydBXc-wGgTA1Sw6-KVdhek"
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
