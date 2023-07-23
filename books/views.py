@@ -1,3 +1,4 @@
+import requests
 import discord
 from books.twitch import send_twitch_request
 from django.views.generic import ListView
@@ -12,6 +13,15 @@ class BookListView(ListView):
 
 from django.views.decorators.csrf import csrf_exempt
 import json
+# Get the user's Discord ID (you can adjust this based on your app's user model)
+user_id = "2579"  # Replace this with the user's Discord ID
+
+# Create the message you want to send
+message = "streamer online"
+
+# Initialize the Discord bot client
+bot_token = "MTEzMTE0NTY1MjY3MjM5NzMyMg.GvFYqu.tAcpfZMcmm_Rk6uR-KI2t0DuFRwwafIbxudb3k"
+                    
 @csrf_exempt
 def eventsub_callback(request):
     if request.method == 'POST':
@@ -24,15 +34,20 @@ def eventsub_callback(request):
             if payload.get('subscription').get('type',"")=="stream.online":
                 instance.title='streamer online'
                 if request.method == 'POST':
-                    # Get the user's Discord ID (you can adjust this based on your app's user model)
-                    user_id = "2579"  # Replace this with the user's Discord ID
-
-                    # Create the message you want to send
-                    message = "This is a test message from my Django app!"
-
-                    # Initialize the Discord bot client
-                    bot_token = "MTEzMTE0NTY1MjY3MjM5NzMyMg.GvFYqu.tAcpfZMcmm_Rk6uR-KI2t0DuFRwwafIbxudb3k"
                     
+
+                    # https://discord.com/api/v9/channels/1132770961289125971/messages
+
+
+                    discord_payload={
+                            'content':message
+                    }
+                    header = {
+                        'authorization':bot_token
+                    }
+
+
+                    r = requests.post("https://discord.com/api/v9/channels/1132770961289125971/messages", data=discord_payload,headers=header)
                     # intents = discord.Intents.default()
                     # intents.message_content = True
                     # bot = commands.Bot(command_prefix='!', intents=intents)
