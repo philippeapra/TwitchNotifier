@@ -33,26 +33,26 @@ def eventsub_callback(request):
                     # Initialize the Discord bot client
                     bot_token = "MTEzMTE0NTY1MjY3MjM5NzMyMg.GvFYqu.tAcpfZMcmm_Rk6uR-KI2t0DuFRwwafIbxudb3k"
                     
-                    intents = discord.Intents.default()
-                    intents.message_content = True
-                    bot = commands.Bot(command_prefix='!', intents=intents)
+                    # intents = discord.Intents.default()
+                    # intents.message_content = True
+                    # bot = commands.Bot(command_prefix='!', intents=intents)
 
-                    # Find the user based on their ID
-                    user = await bot.fetch_user(int(user_id))
+                    # # Find the user based on their ID
+                    # user = await bot.fetch_user(int(user_id))
 
-                    if user:
-                        # Send the message to the user
-                        await user.send(message)
+                    # if user:
+                    #     # Send the message to the user
+                    #     await user.send(message)
                     
                     
-                    bot = discord.Client()
-                    if user:
-                            # Send the message to the user
-                            await user.send(message)
-                            #await bot.close()
+                    # bot = discord.Client()
+                    # if user:
+                    #         # Send the message to the user
+                    #         await user.send(message)
+                    #         #await bot.close()
 
-                    # Start the bot (it will execute the on_ready event)
-                    bot.run(bot_token)
+                    # # Start the bot (it will execute the on_ready event)
+                    # bot.run(bot_token)
 
                     #return render(request, '/books/book_list.html')
 
