@@ -40,14 +40,15 @@ def eventsub_callback(request):
 
 
                     discord_payload={
-                            'content':message
+                            'content':message,
                     }
                     header = {
-                        'authorization':bot_token
+                        'authorization':bot_token,
+                        'content-type':'application/json',
                     }
 
 
-                    r = requests.post("https://discord.com/api/v9/channels/1132770961289125971/messages", data=discord_payload,headers=header)
+                    r = requests.post("https://discord.com/api/v9/channels/1132770961289125971/messages", json=discord_payload,headers=header)
                     # intents = discord.Intents.default()
                     # intents.message_content = True
                     # bot = commands.Bot(command_prefix='!', intents=intents)
