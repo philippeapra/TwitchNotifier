@@ -18,11 +18,12 @@ user_id = "2579"  # Replace this with the user's Discord ID
 
 
 # Initialize the Discord bot client
-#discord_bot_token = "MTEzMTE0NTY1MjY3MjM5NzMyMg.GvFYqu.tAcpfZMcmm_Rk6uR-KI2t0DuFRwwafIbxudb3k"
+#discord_bot_token = "MTEzMTE0NTY1MjY3MjM5NzMyMg.GhBNcT.VvTCJ82hP7rLhGyr_uUGAD197Blvepz0Fz0Vr8"
        #MTEzMTE0NDU4NjAzNTczMjU2Mg.GL0Xmc.Z7Ugx9tFseJQveC2sSIEAXDyVs3Otb1X3_dhV0
 discord_url='https://discord.com/api/v9/channels/1132770961289125971/messages'
 auth={
-        'authorization':'MTEzMTE0NDU4NjAzNTczMjU2Mg.GL0Xmc.Z7Ugx9tFseJQveC2sSIEAXDyVs3Otb1X3_dhV0'
+        #'authorization':'MTEzMTE0NDU4NjAzNTczMjU2Mg.GL0Xmc.Z7Ugx9tFseJQveC2sSIEAXDyVs3Otb1X3_dhV0' #working, no notification
+        'authorization':'MTEzMTE0NTY1MjY3MjM5NzMyMg.GhBNcT.VvTCJ82hP7rLhGyr_uUGAD197Blvepz0Fz0Vr8' #mot tested, bot token 
 }
 @csrf_exempt
 def eventsub_callback(request):
@@ -95,6 +96,8 @@ def eventsub_callback(request):
         instance.save()
         if request.headers.get('Twitch-Eventsub-Message-Type')=='webhook_callback_verification':
             challenge = payload.get('challenge',"")
+            instance.title='subscribed'
+            instance.save()
             return HttpResponse(status=200,content=challenge)
         return HttpResponseRedirect('/books/book_list.html',status=200)
     else:
