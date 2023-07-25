@@ -22,8 +22,8 @@ user_id = "2579"  # Replace this with the user's Discord ID
        #MTEzMTE0NDU4NjAzNTczMjU2Mg.GL0Xmc.Z7Ugx9tFseJQveC2sSIEAXDyVs3Otb1X3_dhV0
 discord_url='https://discord.com/api/v9/channels/1132770961289125971/messages'
 auth={
-        #'authorization':'MTEzMTE0NDU4NjAzNTczMjU2Mg.GL0Xmc.Z7Ugx9tFseJQveC2sSIEAXDyVs3Otb1X3_dhV0' #working, no notification
-        'authorization':'MTEzMTE0NTY1MjY3MjM5NzMyMg.GhBNcT.VvTCJ82hP7rLhGyr_uUGAD197Blvepz0Fz0Vr8' #mot tested, bot token 
+        'authorization':'MTEzMTE0NDU4NjAzNTczMjU2Mg.GL0Xmc.Z7Ugx9tFseJQveC2sSIEAXDyVs3Otb1X3_dhV0' #working, no notification
+        #'authorization':'MTEzMTE0NTY1MjY3MjM5NzMyMg.GhBNcT.VvTCJ82hP7rLhGyr_uUGAD197Blvepz0Fz0Vr8' #mot tested, bot token 
 }
 @csrf_exempt
 def eventsub_callback(request):
