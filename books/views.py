@@ -16,12 +16,14 @@ import json
 # Get the user's Discord ID (you can adjust this based on your app's user model)
 user_id = "2579"  # Replace this with the user's Discord ID
 
-# Create the message you want to send
-message = "streamer online"
 
 # Initialize the Discord bot client
-bot_token = "MTEzMTE0NTY1MjY3MjM5NzMyMg.GvFYqu.tAcpfZMcmm_Rk6uR-KI2t0DuFRwwafIbxudb3k"
-                    
+#discord_bot_token = "MTEzMTE0NTY1MjY3MjM5NzMyMg.GvFYqu.tAcpfZMcmm_Rk6uR-KI2t0DuFRwwafIbxudb3k"
+       #MTEzMTE0NDU4NjAzNTczMjU2Mg.GL0Xmc.Z7Ugx9tFseJQveC2sSIEAXDyVs3Otb1X3_dhV0
+discord_url='https://discord.com/api/v9/channels/1132770961289125971/messages'
+auth={
+        'authorization':'MTEzMTE0NDU4NjAzNTczMjU2Mg.GL0Xmc.Z7Ugx9tFseJQveC2sSIEAXDyVs3Otb1X3_dhV0'
+}
 @csrf_exempt
 def eventsub_callback(request):
     if request.method == 'POST':
@@ -35,15 +37,16 @@ def eventsub_callback(request):
                 instance.title='streamer online'
                 if request.method == 'POST':
                     message='streamer online'
-                    url='https://api.telegram.org/bot6588808014:AAGun2HzXDpExmFuHx5Uj4N7hwdGhuKqR-c/sendMessage?chat_id=-878165001&text='+message
-                    requests.get(url)
-
+                    tg_url='https://api.telegram.org/bot6588808014:AAGun2HzXDpExmFuHx5Uj4N7hwdGhuKqR-c/sendMessage?chat_id=-878165001&text='+message
+                    requests.get(tg_url)
+                    msg={
+                            'content':message,
+                    }
+                    requests.post(discord_url,headers=auth,data=msg)
                     # https://discord.com/api/v9/channels/1132770961289125971/messages
 
 
-                    # discord_payload={
-                    #         'content':message,
-                    # }
+                    
                     # header = {
                     #     'authorization':bot_token,
                     #     'content-type':'application/json',
@@ -78,8 +81,12 @@ def eventsub_callback(request):
             elif payload.get('subscription').get('type',"")=="stream.offline":
                 instance.title='streamer offline'
                 message='streamer offline'
-                url='https://api.telegram.org/bot6588808014:AAGun2HzXDpExmFuHx5Uj4N7hwdGhuKqR-c/sendMessage?chat_id=-878165001&text='+message
-                requests.get(url)
+                tg_url='https://api.telegram.org/bot6588808014:AAGun2HzXDpExmFuHx5Uj4N7hwdGhuKqR-c/sendMessage?chat_id=-878165001&text='+message
+                requests.get(tg_url)
+                msg={
+                    'content':message,
+                }
+                requests.post(discord_url,headers=auth,data=msg)
             else:
                 instance.title='streamer in unknown state'
         instance.isbn = str(payload)
