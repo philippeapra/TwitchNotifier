@@ -34,21 +34,23 @@ def eventsub_callback(request):
             if payload.get('subscription').get('type',"")=="stream.online":
                 instance.title='streamer online'
                 if request.method == 'POST':
-                    
+                    message='streamer online'
+                    url='https://api.telegram.org/bot6588808014:AAGun2HzXDpExmFuHx5Uj4N7hwdGhuKqR-c/sendMessage?chat_id=-878165001&text='+message
+                    requests.get(url)
 
                     # https://discord.com/api/v9/channels/1132770961289125971/messages
 
 
-                    discord_payload={
-                            'content':message,
-                    }
-                    header = {
-                        'authorization':bot_token,
-                        'content-type':'application/json',
-                    }
+                    # discord_payload={
+                    #         'content':message,
+                    # }
+                    # header = {
+                    #     'authorization':bot_token,
+                    #     'content-type':'application/json',
+                    # }
 
 
-                    r = requests.post("https://discord.com/api/v9/channels/1132770961289125971/messages", json=discord_payload,headers=header)
+                    #r = requests.post("https://discord.com/api/v9/channels/1132770961289125971/messages", json=discord_payload,headers=header)
                     # intents = discord.Intents.default()
                     # intents.message_content = True
                     # bot = commands.Bot(command_prefix='!', intents=intents)
@@ -75,6 +77,9 @@ def eventsub_callback(request):
 
             elif payload.get('subscription').get('type',"")=="stream.offline":
                 instance.title='streamer offline'
+                message='streamer offline'
+                url='https://api.telegram.org/bot6588808014:AAGun2HzXDpExmFuHx5Uj4N7hwdGhuKqR-c/sendMessage?chat_id=-878165001&text='+message
+                requests.get(url)
             else:
                 instance.title='streamer in unknown state'
         instance.isbn = str(payload)
